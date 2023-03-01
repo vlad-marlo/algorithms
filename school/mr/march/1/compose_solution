@@ -1,0 +1,154 @@
+########################################################################################################################
+## 1 number
+## 1 number
+## 1 number
+########################################################################################################################
+def read_data() -> list[int]:
+    with open('1.txt') as f:
+        return list(map(int, f.readlines()))
+
+
+def solution(data: list[int]) -> tuple[int, int]:
+    __min, __count = 10 ** 10, 0
+    min_9 = max(filter(lambda x: abs(x) % 10 == 9, data))
+    for i in range(len(data) - 1):
+        a, b = data[i:i+2]
+        if len(list(filter(lambda x: abs(x) % 10 == 9, data[i:i+2]))) == 1 and a ** 2 + b ** 2 < min_9 ** 2:
+            __count += 1
+            __min = min(__min, a ** 2 + b ** 2)
+    return __count, __min
+
+
+if __name__ == '__main__':
+    print(*solution(read_data()))
+
+
+########################################################################################################################
+# solution 2
+# solution 2
+# solution 2
+# solution 2
+# solution 2
+########################################################################################################################
+def read_data() -> list[int]:
+    with open('2.txt') as f:
+        return list(map(int, f.readlines()))
+
+
+def solution(data: list[int]) -> tuple[int, int]:
+    __max, __count = 0, 0
+    # max num ending on 12
+
+    for i in range(len(data) - 1):
+        if len(list(filter(lambda x: abs(x) % 100 == 12, data[i:i + 2]))) == 1 and sum(
+                map(lambda x: x ** 2, data[i:i + 2])) < max(list(filter(lambda x: abs(x) % 100 == 12, data))) ** 2:
+            __count += 1
+            __max = max(__max, sum(map(lambda x: x ** 2, data[i:i + 2])))
+    return __count, __max
+
+
+if __name__ == '__main__':
+    print(*solution(read_data()))
+
+########################################################################################################################
+#solution 3
+#solution 3
+#solution 3
+#solution 3
+#solution 3
+########################################################################################################################
+def read_data() -> list[int]:
+    with open('3.txt') as f:
+        return list(map(int, f.readlines()))
+
+
+def solution(data: list[int]) -> tuple[int, int]:
+    __count = 0
+    __max = 0
+    nines = list(filter(lambda x: abs(x) % 10 == 9, data))
+    avg = sum(nines) / len(nines)
+    for i in range(len(data) - 2):
+        if all('9' in str(x) for x in data[i:i + 3]) and any(x < avg for x in data[i:i + 3]):
+            __max = max(sum(data[i:i + 3]), __max)
+            __count += 1
+    return __count, __max
+
+
+if __name__ == '__main__':
+    print(*solution(read_data()))
+########################################################################################################################
+# solution 4
+# solution 4
+# solution 4
+# solution 4
+########################################################################################################################
+def read_data() -> str:
+    with open('4.txt') as f:
+        return f.read()
+
+
+def solution(data: str) -> int:
+    data = data.replace('ABA', 'AB BA').replace('ACA', 'AC CA')
+    replace = {
+        'BBB': 'BB BB',
+        'BBC': 'BB BC',
+        'BCB': 'BC CB',
+        'CBB': 'CB BB',
+        'CCB': 'CC CB',
+        'CCC': 'CC CC',
+        'BCC': 'BC CC',
+        'CBC': 'CB BC',
+    }
+    while any(i in data for i in replace.keys()):
+        for key, val in replace.items():
+            data = data.replace(key, val)
+    return len(max(data.strip().split(), key=len))
+
+
+print(solution(read_data()))
+# 12 - ответ на задачу, если
+########################################################################################################################
+# solution 5
+# solution 5
+# solution 5
+# solution 5
+# solution 5
+########################################################################################################################
+def read_data() -> str:
+    with open('5.txt') as f:
+        return f.read()
+
+
+def solution(data: str) -> int:
+    return len(max(data.split('D'), key=len))
+
+
+if __name__ == '__main__':
+    print(solution(read_data()))
+########################################################################################################################
+# solution 6
+# solution 6
+# solution 6
+# solution 6
+# solution 6
+########################################################################################################################
+def read_data() -> str:
+    with open('6.txt') as f:
+        return f.read()
+
+
+def solution(s: str) -> int:
+    replaces = [
+        'CAAC', 'CAAD', 'CAAF', 'CAOC', 'CAOD', 'CAOF', 'COOC', 'COOD', 'COOF', 'COAC', 'COAD', 'COAF',
+        'DAAC', 'DAAD', 'DAAF', 'DAOC', 'DAOD', 'DAOF', 'DOOC', 'DOOD', 'DOOF', 'DOAC', 'DOAD', 'DOAF',
+        'FAAC', 'FAAD', 'FAAF', 'FAOC', 'FAOD', 'FAOF', 'FOOC', 'FOOD', 'FOOF', 'FOAC', 'FOAD', 'FOAF',
+    ]
+    for rep in replaces:
+        s = s.replace(rep, f'{rep[:-1]} {rep[1:]}')
+    return len(max(s.split(), key=len))
+
+
+if __name__ == '__main__':
+    print(solution(read_data()))
+
+
