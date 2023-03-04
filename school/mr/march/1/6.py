@@ -4,13 +4,13 @@ def read_data() -> str:
 
 
 def solution(s: str) -> int:
-    replaces = [
-        'CAAC', 'CAAD', 'CAAF', 'CAOC', 'CAOD', 'CAOF', 'COOC', 'COOD', 'COOF', 'COAC', 'COAD', 'COAF',
-        'DAAC', 'DAAD', 'DAAF', 'DAOC', 'DAOD', 'DAOF', 'DOOC', 'DOOD', 'DOOF', 'DOAC', 'DOAD', 'DOAF',
-        'FAAC', 'FAAD', 'FAAF', 'FAOC', 'FAOD', 'FAOF', 'FOOC', 'FOOD', 'FOOF', 'FOAC', 'FOAD', 'FOAF',
-    ]
-    for rep in replaces:
-        s = s.replace(rep, f'{rep[:-1]} {rep[1:]}')
+    sog = 'CDF'
+    gl = 'AO'
+    replaces = [f'{l1}{l2}{l3}{l4}' for l1 in sog for l2 in gl for l3 in gl for l4 in sog]
+    while any(rep in s for rep in replaces):
+        for rep in replaces:
+            s = s.replace(rep, f'{rep[:-1]} {rep[1:]}')
+    assert not any(rep in s for rep in replaces)
     return len(max(s.split(), key=len))
 
 

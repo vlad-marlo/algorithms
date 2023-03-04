@@ -16,11 +16,15 @@ def solution(data: list[tuple[int, int, int, int, int, int, int, int]]) -> int:
         idx = line.index(0) % 4
         indexes = [*range(4)]
         indexes.remove(idx)
-        for i in indexes:
+        print(*((line[x1], line[x2]) for x1 in indexes for x2 in [i for i in indexes if i != x1]))
+        for x1 in indexes:
             loc = indexes[:]
-            loc.remove(i)
-            if any(line[x] == line[i] or line[x + 4] == line[i + 4] for x in loc):
-                c += 1
+            loc.remove(x1)
+
+            if not any(line[x1] == line[x1] or line[x1 + 4] == line[x1 + 4] for x1 in loc):
+                break
+        else:
+            c += 1
     return c
 
 
