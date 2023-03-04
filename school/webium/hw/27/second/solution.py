@@ -4,10 +4,15 @@ def read_data(file: str) -> list[int]:
 
 
 def solution(data: list[int]) -> int:
-    idx = [-1, *(i for i in range(len(data)) if int((n := data[i]) ** 0.5) ** 2 == n and n != 1), len(data)]
-    return max([idx[i + 1] - idx[i] - 1 for i in range(len(idx) - 1)])
+    c = 0
+    for j in range(1, len(data), 3):
+        i = (j - 1) // 3
+        assert j == (3 * i) + 1
+        if data[i] * 2.5 == data[j] or data[j] * 2.5 == data[i]:
+            c += 1
+    return c
 
 
+print(solution([2, 5, 3, 14, 27]))
 print(solution(read_data('27_a.txt')))
-print(solution([1, 4, 14, 5, 9, 1, 2, 3, 8, 9]))
 print(solution(read_data('27_b.txt')))
