@@ -5,7 +5,8 @@ with open('2.txt') as file:
         if data.get(row) is None:
             data[row] = []
         data[row].append(col)
-
+for row in data:
+    data.get(row, []).sort()
 max_col = 0
 min_place = 0
 for key, val in data.items():
@@ -18,5 +19,5 @@ for key, val in data.items():
                 max_col = key
                 min_place = a+1
 
-# 35053 59732
+# 50449 59966
 print(min_place, max_col)
