@@ -9,16 +9,13 @@ func lengthOfLongestSubstring(s string) (result int) {
 		if !ok || lastIndex < index-current {
 			current++
 		} else {
-			if current > result {
-				result = current
-			}
 			start = lastIndex + 1
 			current = index - start + 1
 		}
 		charLastIndex[character] = index
-	}
-	if current > result {
-		result = current
+		if current > result {
+			result = current
+		}
 	}
 	return
 }
