@@ -28,10 +28,10 @@ int solution(const std::vector<std::vector<int>>& data)
         b = triple.at(0) + triple.at(1) + triple.at(2) - a - c;
 
         ans += c;
-        if ((c - b) % 91 != 0)
-            min_diff = std::min(min_diff, c - b);
-        if ((c - a) % 91 != 0)
-            min_diff = std::min(min_diff, c - a);
+        if (std::abs(c - b) % 91 != 0)
+            min_diff = std::min(min_diff, std::abs(c - b));
+        if (std::abs(c - a) % 91 != 0)
+            min_diff = std::min(min_diff, abs(c - a));
     }
     if (ans % 91 == 0)
         ans -= min_diff;

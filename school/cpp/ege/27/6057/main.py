@@ -13,10 +13,9 @@ def soluton(data: list[tuple[int, int, int]]) -> int:
     dif = 100**100
     for triple in data:
         ans += triple[2]
-        assert triple[2] == max(triple)
-        if (now_diff := triple[2] - triple[1]) % 91 != 0:
+        if abs(now_diff := triple[2] - triple[1]) % 91 != 0:
             dif = min(dif, now_diff)
-        elif (now_diff := triple[2] - triple[0]) % 91 != 0:
+        elif abs(now_diff := triple[2] - triple[0]) % 91 != 0:
             dif = min(dif, now_diff)
     if ans % 91 == 0:
         print(f'{dif=}')
