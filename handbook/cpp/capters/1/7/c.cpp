@@ -18,7 +18,7 @@ std::vector<size_t> get_indexes_of_delimiter(const std::string& str, char delimi
     return indexes;
 }
 
-std::vector<std::string> Split(const std::string& str, char delimiter)
+std::vector<std::string> Split(const std::string& str, const char& delimiter)
 {
     std::vector<size_t> indexes = get_indexes_of_delimiter(str, delimiter);
     if (indexes.size() < 1)
