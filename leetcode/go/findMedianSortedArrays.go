@@ -1,6 +1,6 @@
 package main
 
-func max(a, b int) int {
+func max[T int64 | int32 | int | float64 | float32](a, b T) T {
 	if a > b {
 		return a
 	}

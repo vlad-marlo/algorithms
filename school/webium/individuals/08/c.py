@@ -6,19 +6,19 @@ def read_data(filename: str) -> list[int]:
 def solution(data: list[int]) -> int:
     n = len(data)
     o_i = n // 2
-    sum_after = sum(data[o_i:])
-    sum_before = sum(data[1:o_i])
-    costs = [0] * n
-    for i in range(1, n):
-        costs[0] += min(n - i, i) * data[i]
-    ans = costs[0]
-    res = 1
-    for i in range(1, n):
-        sum_before += data[i - 1] - data[o_i]
-        sum_after += data[o_i]
-        costs[i] = costs[i-1] + sum_after - sum_before
-        o_i = (o_i + 1) % n
-
+    sum_after = data[o_i:]
+    sum_before = data[:o_i]
+    print(len(sum_before), len(sum_after))
+    # costs = [0] * n
+    # for i in range(1, n):
+    #     costs[0] += min(n - i, i) * data[i]
+    # ans = costs[0]
+    # res = 1
+    # for i in range(1, n):
+    #     sum_before += data[i - 1] - data[o_i]
+    #     sum_after += data[o_i]
+    #     costs[i] = costs[i-1] + sum_after - sum_before
+    #     o_i = (o_i + 1) % n
     return -1
 
 

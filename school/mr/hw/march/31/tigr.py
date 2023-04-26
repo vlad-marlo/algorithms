@@ -26,4 +26,5 @@ for x in range(1, 70):
     if res == 3:
         print(20, x)
     if res == 4:
+        str('sdf').zfill()
         print(21, x)

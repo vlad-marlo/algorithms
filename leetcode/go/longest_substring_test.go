@@ -11,15 +11,15 @@ func TestLongestSubstring(t *testing.T) {
 	tt := []struct {
 		name  string
 		input string
-		want  int
+		want  string
 	}{
-		{"#1", "abcabcbb", 3},
-		{"single character", strings.Repeat("b", 100), 1},
-		{"xd", "pwwkew", 3},
+		{"#1", "abcabcbb", "bcb"},
+		{"single character", strings.Repeat("b", 100), strings.Repeat("b", 100)},
+		{"xd", "pwwkew", "ww"},
 	}
 	for _, tc := range tt {
 		t.Run(tc.name, func(t *testing.T) {
-			assert.Equal(t, tc.want, lengthOfLongestSubstring(tc.input))
+			assert.Equal(t, tc.want, longestPalindromeOld(tc.input))
 		})
 	}
 }
