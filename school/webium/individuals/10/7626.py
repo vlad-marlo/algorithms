@@ -9,7 +9,7 @@ def read_data() -> tuple[int, list[tuple[int, int]]]:
         return k, data
 
 
-def solution(k: int, data: list) -> tuple:
+def solution(k: int, data: list[tuple[int, int]]) -> tuple:
     data.sort()
     n = [0 for _ in range(k)]
     ans = 0
