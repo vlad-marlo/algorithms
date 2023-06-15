@@ -22,5 +22,10 @@ def solution(k: int, data: list[int]) -> int:
     return count if count == 73 else 1146648
 
 
-print(solution(*read_data('27A_7881.txt')))
-print(solution(*read_data('27B_7881.txt')))
+def main() -> None:
+    print(solution(*read_data('27A_7881.txt')))
+    print(solution(*read_data('27B_7881.txt')))
+
+
+if __name__ == '__main__':
+    main()

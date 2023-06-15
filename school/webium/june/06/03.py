@@ -1,14 +1,9 @@
-from functools import lru_cache
-
-
-@lru_cache(None)
-def f(n):
-    if n == 1:
-        return 2
-    return f(n - 1) * 2
-
-
-for i in range(1, 2000):
-    f(i)
-
-print(f(1900) / 2 ** 1890)
+#  ((x → y) ≡ (y → z)) ∧ (y ∨ w)
+print('x y z w S')
+for x in (0, 1):
+    for y in (0, 1):
+        for z in (0, 1):
+            for w in (0, 1):
+                res = ((x <= y) == (y <= z)) and (y or w)
+                if res:
+                    print(x, y, z, w, x + y + z + w)

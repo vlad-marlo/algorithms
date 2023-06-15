@@ -1,0 +1,1 @@
+print(len(max(open('24.txt').read().split('A'), key=len)))
