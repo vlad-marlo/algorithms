@@ -4,4 +4,7 @@ def algo(s: str) -> str:
     return s
 
 
-print(algo(61*'7'))
+print(algo(61 * '7'))
+
+a = 3.16
+print(a.as_integer_ratio())
